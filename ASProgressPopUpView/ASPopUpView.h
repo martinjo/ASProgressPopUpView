@@ -13,16 +13,17 @@
 
 #import <UIKit/UIKit.h>
 
+#define ARROW_LENGTH 13
+
 @protocol ASPopUpViewDelegate <NSObject>
 - (CGFloat)currentValueOffset; //expects value in the range 0.0 - 1.0
-- (void)colorDidUpdate;
+- (void)colorAnimationDidStart;
 - (void)popUpViewDidHide;
 @end
 
 @interface ASPopUpView : UIView
 
 @property (weak, nonatomic) id <ASPopUpViewDelegate> delegate;
-@property (nonatomic) CGFloat cornerRadius;
 
 - (UIColor *)color;
 - (void)setColor:(UIColor *)color;
@@ -30,23 +31,12 @@
 
 - (void)setTextColor:(UIColor *)textColor;
 - (void)setFont:(UIFont *)font;
-- (void)setText:(NSString *)text;
+- (void)setString:(NSString *)string;
 
 - (void)setAnimatedColors:(NSArray *)animatedColors withKeyTimes:(NSArray *)keyTimes;
 
-// sets the specified view properties immediately without animation
-- (void)setFrame:(CGRect)frame
-     arrowOffset:(CGFloat)arrowOffset
-           text:(NSString *)text
- animationOffset:(CGFloat)animOffset;
-
-// animates the specified view properties from current state to new state with the given duration
-- (void)animateFrame:(CGRect)frame
-         arrowOffset:(CGFloat)arrowOffset
-                text:(NSString *)text
-     animationOffset:(CGFloat)animOffset
-            duration:(NSTimeInterval)duration
-          completion:(void (^)(UIColor *endColor))completion;
+- (void)setAnimationOffset:(CGFloat)offset;
+- (void)setArrowCenterOffset:(CGFloat)offset;
 
 - (CGSize)popUpSizeForString:(NSString *)string;
 

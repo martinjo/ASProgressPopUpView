@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ASPopUpView.h"
+
 @protocol ASProgressPopUpViewDelegate;
 @protocol ASProgressPopUpViewDataSource;
 
@@ -29,9 +31,6 @@
 // the above @property distributes the colors evenly across the progress view
 // to specify the exact position of colors, pass an NSArray of NSNumbers (in the range 0.0 - 1.0)
 - (void)setPopUpViewAnimatedColors:(NSArray *)popUpViewAnimatedColors withPositions:(NSArray *)positions;
-
-// radius of the popUpView, default is 4.0
-@property (nonatomic) CGFloat popUpViewCornerRadius;
 
 // changes the progress track to match current popUpView color
 // the track color alpha is always set to 1.0, even if popUpView color is less than 1.0
